@@ -31,9 +31,9 @@ def cria_item(item, width, height, x, y):
     return sprite
 
 #Pontuacao do jogador
-score_font = pg.font.SysFont('consolas', 60, True)
+fonte_placar = pg.font.SysFont('consolas', 60, True)
 
 #Score na tela do jogo
-def scoreDisplay(win, score, x, y):
-    score_text = score_font.render(str(score), True, (0, 0, 0))
-    win.blit(score_text, (x, y))
+def placar(win, score, x, y):
+    texto_placar = fonte_placar.render(str(score), True, (0, 0, 0))
+    win.blit(texto_placar, (x, y))
