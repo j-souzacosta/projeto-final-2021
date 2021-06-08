@@ -84,3 +84,25 @@ while True:
 
             clock.tick(60)
             pg.display.update()
+            
+    #Animacao entre a tela inicial e a tela do jogo
+    elif tela == 'tela de animação':
+        # Inicializa de transição
+        logo = funcoes.sprite_fundo('imagens/fundos/home_screen.png')
+
+        fundo = pg.sprite.Group()
+        fundo.add(funcoes.sprite_fundo('imagens/fundos/mapa.png'))
+        fundo.add(logo)
+
+        # Loop da tela de transição
+        while tela == 'tela de animação':
+            # Transicao
+            for y in range(0, -config.HEIGHT, -10):
+                logo.rect.y = y
+
+                fundo.draw(win)
+
+                clock.tick(60)
+                pg.display.update()
+
+            tela = 'tela de jogo'
