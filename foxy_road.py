@@ -59,3 +59,28 @@ while True:
 
             clock.tick(60)
             pg.display.update()
+
+    #Tela com instrucoes de como jogar 
+    elif tela == 'tela de como jogar':
+        fundo = pg.sprite.Group()
+        fundo.add(funcoes.sprite_fundo('imagens/fundos/how_to_play.png'))
+
+        # Loop da tela de como jogar
+        while tela == 'tela de como jogar':
+            fundo.draw(win)
+
+            # Detecta Teclas
+            pressed_keys = pg.key.get_pressed()
+
+            # Tecla ESC
+            if pressed_keys[pg.K_ESCAPE]:
+                tela = 'tela de inicio'
+
+            # Pygame
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    tela = -1
+                    break
+
+            clock.tick(60)
+            pg.display.update()
