@@ -1,3 +1,4 @@
+#importa as bibliotecas necessarias
 import pygame as pg
 import random
 
@@ -13,13 +14,48 @@ from veiculo import Veiculo
 from raposa import Raposa
 from explosao import Explosao
 
-
+#Configuracoes da tela
 pg.display.set_caption('Foxy Road')
 win = pg.display.set_mode((config.WIDTH, config.HEIGHT))
 
+#Configuracao dos sons
 pg.mixer.music.set_volume(config.VOLUME)
 musica_jogo = pg.mixer.music.load('sons/musica_do_jogo.mp3')
 barulho_pontuacao = pg.mixer.Sound('sons/pontuacao.wav')
 pg.mixer.music.play(-1)
 
 clock = pg.time.Clock()
+
+#Jogo inicializa na tela de inicio
+tela = 'tela de inicio'
+
+#Loop do jogo
+while True:
+    if tela == 'tela de inicio':
+        # Inicializa tela inicial
+        fundo = pg.sprite.Group()
+        fundo.add(funcoes.sprite_fundo('imagens/fundos/home_screen.png'))
+
+        # Loop da tela inicial
+        while tela == 'tela de inicio':
+            fundo.draw(win)
+
+            # Detecta Teclas
+            pressed_keys = pg.key.get_pressed()
+
+            # Tecla ESPACO
+            if pressed_keys[pg.K_SPACE]:
+                tela = 'tela de animação'
+
+            # Tecla ENTER
+            elif pressed_keys[pg.K_RETURN]:
+                tela = 'tela de como jogar'
+            
+            # Pygame
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    tela = -1
+                    break
+
+            clock.tick(60)
+            pg.display.update()
