@@ -139,3 +139,60 @@ while True:
 
         # Score comeca com valor nulo
         score = 0
+
+
+        # Loop da tela de jogo
+        while tela == 'tela de jogo':
+            
+            # Adiciona os componentes no jogo
+            fundo.draw(win)
+            veiculos.draw(win)
+            personagens.draw(win)
+            macas.draw(win)
+            cestas.draw(win)
+
+            veiculos.update()
+            personagens.update()
+            macas.update()
+            cestas.update()
+            # Checa colisao da raposinha com veiculos
+            if raposinha.checkCollision(veiculos):
+                raposinha.kill()
+                explosao.explode(win, raposinha.x, raposinha.y)
+
+                tela = 'tela de derrota'
+
+            # Checa colisao da raposinha com a maca e adiciona a cesta  
+            for maca in raposinha.checkCollision(macas):
+                maca.kill()
+                barulho_pontuacao.play()
+                cestinha.rect.y = random.randint(100,550)
+                cestas.add(cestinha)
+
+            # Checa colisao da raposinha com a cesta, adiciona a maca e atualiza o score
+            for cesta in raposinha.checkCollision(cestas):
+                cesta.kill()
+                barulho_pontuacao.play()
+                macazinha.rect.y = random.randint(100,550)
+                macas.add(macazinha)
+
+                score+=1
+                
+                # Atualiza a velocidade dos veiculos em 20% a mais
+                for veiculo in veiculos:
+                    veiculo.vel *= 1.2
+                
+                # Atualiza a velocidade da raposa em 20% a mais
+                raposinha.vel *= 1.2
+                    
+            # Pygame   
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    tela = -1
+                    break
+            
+            # Placar do jogo
+            funcoes.placar(win, score, 50, 50)
+
+            clock.tick(60)
+            pg.display.update()
