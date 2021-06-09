@@ -106,3 +106,36 @@ while True:
                 pg.display.update()
 
             tela = 'tela de jogo'
+
+    #Tela do jogo
+    elif tela == 'tela de jogo':
+        fundo = pg.sprite.Group()
+        fundo.add(funcoes.sprite_fundo('imagens/fundos/mapa.png'))
+        
+        # Config dos veiculos 
+        veiculos = pg.sprite.Group()
+        veiculos.add(Veiculo("carro2", vel=4,  x=260))
+        veiculos.add(Veiculo("carro1", vel=-7, x=370))
+        veiculos.add(Veiculo("carro3", vel=-5, x=873))
+        veiculos.add(Veiculo("barco",  vel=3,  x=632))
+        veiculos.add(Veiculo("trem",   vel=6,  x=1095))
+
+        # Adiciona a classe da explosao
+        explosao = Explosao()
+
+        # Config Raposinha
+        personagens = pg.sprite.Group()
+        raposinha = Raposa(50, config.HEIGHT / 2)
+        personagens.add(raposinha)
+
+        # Config maca
+        macas = pg.sprite.Group()
+        macazinha= funcoes.cria_item('maca', width=70, height=100, x=1225, y=config.HEIGHT/2)
+        macas.add(macazinha)
+
+        # Config cesta 
+        cestas = pg.sprite.Group()
+        cestinha= funcoes.cria_item('cesta', width=70, height=100, x=75, y=config.HEIGHT/2)
+
+        # Score comeca com valor nulo
+        score = 0
