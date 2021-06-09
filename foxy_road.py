@@ -196,3 +196,43 @@ while True:
 
             clock.tick(60)
             pg.display.update()
+
+    # Tela de derrota
+    elif tela == 'tela de derrota':
+
+        # Inicializa de game over
+        fundo = pg.sprite.Group()
+        fundo.add(funcoes.sprite_fundo('imagens/fundos/derrota.png'))
+
+        # Loop da tela de game over
+        while tela == 'tela de derrota':
+            fundo.draw(win)
+            
+            # Detecta as teclas
+            pressed_keys = pg.key.get_pressed()
+
+            # Tecla ESPACO
+            if pressed_keys[pg.K_SPACE]:
+                tela = 'tela de animação'
+
+            # Tecla ENTER
+            elif pressed_keys[pg.K_RETURN]:
+                tela = -1
+
+            # Mostra Pontuacao na tela de game over
+            funcoes.placar(win, score, 100, 100)
+            
+            # Pygame
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    tela = -1
+                    break
+
+            clock.tick(60)
+            pg.display.update()
+
+    else:
+        break
+
+# Fecha o jogo
+pg.quit()
