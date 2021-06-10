@@ -1,4 +1,4 @@
-# projeto-final-2021
+# Foxy Road
 jogo em pygame
 
 FOXY ROAD
