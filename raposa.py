@@ -50,17 +50,17 @@ class Raposa(pg.sprite.Sprite):
             self.y += self.vel
 
     def correction(self):
-        if self.x - self.width / 2 < 0:
-            self.x = self.width / 2
-
-        elif self.x + self.width / 2 > config.WIDTH:
-            self.x = config.WIDTH - self.width / 2
-
         if self.y - self.height / 2 < 0:
             self.y = self.height / 2
 
         elif self.y + self.height / 2 > config.HEIGHT:
             self.y = config.HEIGHT - self.height / 2
+
+        if self.x - self.width / 2 < 0:
+            self.x = self.width / 2
+
+        elif self.x + self.width / 2 > config.WIDTH:
+            self.x = config.WIDTH - self.width / 2
 
     #checagem de colisao
     def checkCollision(self, group):
