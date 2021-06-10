@@ -14,7 +14,7 @@ git clone https://github.com/souzaexe/projeto-final-2021.git
 PROJETO-FINAL-2021
 
 3-Run the game:
-python src\foxy_road.py
+foxy_road.py
 
 Press SPACE to start the game.
 Use the arrow keys to move the fox.
